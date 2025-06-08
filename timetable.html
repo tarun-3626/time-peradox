@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generated Timetable</title>
+  <style>
+    table { border-collapse: collapse; width: 100%; margin-bottom: 40px; }
+    th, td { border: 1px solid #444; padding: 10px; text-align: center; }
+    th { background-color: #f0f0f0; }
+    h2 { text-align: center; margin-top: 40px; }
+  </style>
+</head>
+<body>
+  <h1>Generated Timetable</h1>
+  {% for section in sections %}
+  <h2>Section {{ section }}</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Day</th>
+        {% for p in range(slots) %}<th>Period {{ p+1 }}</th>{% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for d in range(days|length) %}
+      <tr>
+        <td>{{ days[d] }}</td>
+        {% for p in range(slots) %}
+        <td>{{ timetable[section][d][p] }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endfor %}
+</body>
+</html>
