@@ -1,6 +1,6 @@
 from collections import defaultdict
 
-# Detect scheduling conflicts
+
 def detect_conflicts(timetable):
     conflicts = []
     for section, days in timetable.items():
@@ -13,7 +13,7 @@ def detect_conflicts(timetable):
                     conflicts.append((section, day, hour, entries))
     return conflicts
 
-# Count how many hours each teacher is teaching
+
 def teacher_load(timetable):
     load = defaultdict(int)
     for section, days in timetable.items():
@@ -21,10 +21,9 @@ def teacher_load(timetable):
             for subject, teacher, hour in sessions:
                 load[teacher] += 1
     return dict(load)
-
-# Find free hours for each section
+    
 def find_free_hours(timetable, start_hour=9, end_hour=17):
-    free_slots = defaultdict(lambda: defaultdict(list))  # section -> day -> free hours
+    free_slots = defaultdict(lambda: defaultdict(list))  
     full_hours = [str(h) for h in range(start_hour, end_hour + 1)]
 
     for section, days in timetable.items():
@@ -34,7 +33,7 @@ def find_free_hours(timetable, start_hour=9, end_hour=17):
             free_slots[section][day] = free
     return free_slots
 
-# Pretty print conflicts
+
 def print_conflicts(conflicts):
     if not conflicts:
         print("✅ No conflicts found.")
