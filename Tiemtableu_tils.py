@@ -24,7 +24,7 @@ def teacher_load(timetable):
     
 def find_free_hours(timetable, start_hour=9, end_hour=17):
     free_slots = defaultdict(lambda: defaultdict(list))  
-    full_hours = [str(h) for h in range(start_hour, end_hour + 1)]
+    full_hours = [str(h) for h in range(start_hour, Semester+ 1)]
 
     for section, days in timetable.items():
         for day in ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']:
